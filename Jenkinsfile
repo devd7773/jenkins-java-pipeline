@@ -21,7 +21,7 @@ pipeline {
 	     }
              stage("test the code in docker container") {
 	          steps {
-		  	sh "docker run -dit --name java-tomcat:$BUILD_NUMBER -p 80:8080 java-image:$BUILD_TAG"
+		  	sh "docker run -dit --name java-tomcat-$BUILD_tag -p 80:8080 java-image:$BUILD_TAG"
 		  }
 
 	     }
