@@ -17,6 +17,15 @@ pipeline {
              stage("build the image from dockerfile") {
 	          steps {
 		  	sh "docker build -t java-image:$BUILD_TAG ."
+			sh "docker tag java-image:$BUILD_TAG dev7773/java-image:$BUILD_TAG"
+		  }
+	     }
+	     stage("push the docker") {
+	     	  steps {
+		  	withCredentials([string(credentialsId: 'docker-hub-cred', variable: 'my_cred')]) {
+				sh "docker login -u dev7773 -p ${my_cred}"
+				sh "docker push dev7773/java-image:$BUILD_TAG"
+                        }
 		  }
 	     }
              stage("test the code in docker container") {
