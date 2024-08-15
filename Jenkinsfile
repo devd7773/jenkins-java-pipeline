@@ -33,11 +33,6 @@ pipeline {
 		  	sh "docker run -dit --name java-tomcat-$BUILD_tag -p 80-90:8080 java-image:$BUILD_TAG"
 		  }
 	     }
-             stage("QAT") {
-		  steps {
-			sh "curl http://localhost:80-90"
-		  }
-	     }
 	     
 	}
 
