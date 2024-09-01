@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-	      label "my-ubuntu-slave"
-	}
+	agent any
 	stages {
 	     stage("pulling the code from scm") {
 	          steps {
@@ -14,4 +12,5 @@ pipeline {
 			sh "mvn clean package"
 		  }
 	     }
+	}	
 }
