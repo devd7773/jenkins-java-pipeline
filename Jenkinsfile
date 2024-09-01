@@ -8,7 +8,7 @@ pipeline {
 	     }
 	     stage("build the code") {
 	     	  steps {
-		  	sh "mvn dependency:purge-local-repository"
+		  	sh "mvn compile"
 			sh "mvn clean package"
 		  }
 	     }
